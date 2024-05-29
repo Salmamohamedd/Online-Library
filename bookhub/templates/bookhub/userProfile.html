@@ -1,0 +1,84 @@
+{% extends "bookhub/userLayout.html" %}
+{% load static %}
+
+{% block content%}
+ <button class="searchbtn" onclick="window.location.href = `{% url 'userBooks' user.id %}`"><i class="fa fa-search search_icon"></i></button>
+{% endblock  %}
+    {% block head %}
+    <link href="{% static 'bookhub/profileUser.css' %}" rel="stylesheet">
+    {% endblock %}
+
+
+
+
+    {% block body %}
+    <!-- style="display: grid; align-items: center; grid-template-columns: 1 fr 1 fr 1 fr; column-gap: 5px;" -->
+
+    <div class="bigcontainer">
+        <div class="container1">
+            <div class="Userpic">
+                <img src="{% static 'bookhub/profile.jpg'%}" width="250" height="250" class="userimg"/>  
+                <br>
+                <button type="button" onclick="editProfile()" title="edit profile"><img src="{% static 'bookhub/icons8-edit-profile-30.png'%}" id="editicon"></button>
+            </div>
+            <div class="Userdetails">
+                <p class="outsidep">Username: <p class="insidep" id="username value">{{user.username}}</p>  <!--mmkn n3mlha readonly 34an lma ndos 3la edit n3ml onclick y5leha msh readonly f eluser y2dr y8yr el values-->
+                <br><br>
+                <p class="outsidep">Name: <p class="insidep" id="name value">{{user.name}}</p>
+                <br><br>
+                <!--<p class="outsidep">Gender: <input type="radio" name="gender" id="female" selected>Female <input type="radio" name="gender" id="male">Male-->
+                <p class="outsidep">Gender: <p class="insidep" id="gender value">{{user.gender}}</p>
+                <br><br>
+                <p class="outsidep">Gmail: <p class="insidep" id="gmail value">{{user.email}}</p>
+                <br><br>
+                <!--<p class="outsidep">Last Active: <input type="date" readonly></p>-->
+                <br><br>
+            </div>
+        </div>
+
+        {% if borrowed %}
+        <div id="recentlyb">
+            <h3>Recently Borrowed:</h3>
+            <div class="recentlybooks">
+
+                {% if borrowed|length > 4 %}
+               
+                    {% for book in borrowed|slice:"0:4" reversed %}
+                        <a href="{% url 'bookPage' book.id user.id %}"><img src="{% static 'bookhub/' %}{{ book.cover }}" width="150" height="230"></a>
+                    {% endfor %}
+                {% else %}
+                    {% for book in borrowed reversed %}
+                    <a href="{% url 'bookPage' book.id user.id %}"><img src="{% static 'bookhub/' %}{{ book.cover }}" width="150" height="230"></a>                    {% endfor %}
+                    <a href ="{% url 'userBorrowed' user.id %}" id="recentlyborrowedbtn">see more...</a> <!--elmfrood ywdeeny 3la el list bta3t recently borrowed aw borrowed books 3amtn-->
+                    <div class="bookshelf"></div>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if liked %}
+
+        <div id="recentlyl">
+            <h3>Recently Liked:</h3>
+            <div class="recentlybooks">
+
+                {% if liked|length > 4 %}             
+                    {% for book in liked|slice:"0:4" reversed %}
+                    <a href="{% url 'bookPage' book.id user.id %}"><img src="{% static 'bookhub/' %}{{ book.cover }}" width="150" height="230"></a>                    {% endfor %}
+                {% else %}               
+                    {% for book in liked reversed %}
+                    <a href="{% url 'bookPage' book.id user.id %}"><img src="{% static 'bookhub/' %}{{ book.cover }}" width="150" height="230"></a>                    {% endfor %}
+                    <a href ="{% url 'userLiked' user.id %}" id="recentlyborrowedbtn">see more...</a> <!--elmfrood ywdeeny 3la el list bta3t recently borrowed aw borrowed books 3amtn-->
+                    <div class="bookshelf"></div>         
+                {% endif %}
+            </div>
+        </div>
+
+        {% endif %}
+    </div>
+
+    
+    
+    {% comment %} <script src="{% static 'bookhub/user&adminProfiles.js'%}"></script> {% endcomment %}
+        
+    {% endblock %}

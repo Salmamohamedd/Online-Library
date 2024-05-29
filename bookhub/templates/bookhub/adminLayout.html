@@ -1,0 +1,55 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="{% static 'bookhub/navbarstyle.css' %}" rel="stylesheet">
+    <link href="{% static 'bookhub/footerstyle.css' %}" rel="stylesheet">
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+    <header class="h">
+        <h2 class="logo">Book<span>Hub</span></h2>
+        <nav class="navbar">
+            <a href="{% url 'adminHome' admin.id %}">Home</a>
+            <a href="{% url 'adminBooks' admin.id%}">Manage Books</a>
+            <a href="{% url 'adminAbout' admin.id%}">About Us</a>
+            <a href="{% url 'adminContact' admin.id%}">Contact Us</a>
+            <div class="search-box">
+                {% block content %}{% endblock %}
+            </div>
+            <!-- <script src="test.js"></script> -->
+    
+        </nav>
+        <div class="navicons">
+            <a href="{% url 'adminProfile' admin.id %}" class="fas fa-user"></a>
+            <a href="{% url 'signin' %}" class="fas fa-sign-out"></a>
+        </div>
+</header>
+
+{% block body %}
+{% endblock %}
+
+<footer class="footer">
+    <div class="footernav">
+        <a href="{% url 'adminHome' admin.id%}"> Home </a>
+        <a href="{% url 'adminAbout' admin.id%}"> About Us </a>
+        <a href="{% url 'adminContact' admin.id%}"> Contact Us </a>
+        <a href="{% url 'signin' %}"> Log Out </a>
+    
+    </div>
+    <div class="contact">
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-instagram"></a>
+        <a href="#" class="fa fa-twitter"></a>
+    </div>
+    <p class="copyright"> copyright &copy; <span class="book">Book</span><span class="hub">Hub</span> Library</p>
+</footer>    
+</body>
+</html>

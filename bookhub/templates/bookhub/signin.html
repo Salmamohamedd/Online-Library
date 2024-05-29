@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>log_in</title>
+    <link href="{% static 'bookhub/sign_in.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+       
+        <h1>sign in</h1>
+        {% if message %}
+        <script>
+            window.alert("{{ message }}")
+        </script>
+        {% endif %}
+       
+        <form action="{% url 'signin' %}" method="post">
+            {% csrf_token %}
+            <div class="box">
+                
+                <input type="text" id="name" name="name"  autofocus required>
+                <label for="name">username</label>
+                <i class="fa fa-user icon"></i>
+
+            </div>
+            
+            <div class="box">
+                
+                <input type="password" id="password" name="password"  required>
+                <label for="password">password</label>
+                <i style="font-size:20px" class="fa">&#xf023;</i>
+            </div>
+       
+            
+
+            <div class="links">
+               
+
+                    <button id="admin-login-btn" type="submit">Login</button>
+               
+            
+                
+            
+            <br>
+            {% comment %} <a href="main_user.html" >
+                <button id="user-login-btn" type="button">Login as User</button>
+            </a> {% endcomment %}
+            </div>
+
+            <p class="item1">forget password?</p>
+
+
+            <p class="item2">
+            you don't have an account?
+            <a href="{% url 'signup' %}">sign up</a>
+            </p>
+
+
+        </form>
+    </div>
+
+    {% comment %} <script src="sign_in.js"></script> {% endcomment %}
+
+</body>
+
+</html>

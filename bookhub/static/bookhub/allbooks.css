@@ -1,0 +1,141 @@
+
+
+.allbooks .header{
+    font-size: 50px;
+}
+
+.lists{
+    display: grid;
+    grid-template-columns: repeat(4, 25%); ;
+    gap: 10px;
+    padding: 10px;
+    margin:auto 60px;
+}
+
+#lists .book{
+    border:2px solid #2b2129;
+    box-shadow: 0 20px 20px rgba(0, 0, 0 ,0.2);
+    background-color:#f2e5d9;
+    background-color:#dd8e5d;
+    background-color:#faf8f6;
+    background-color:#f1ebe6;
+    background-color:#f9d6c1;
+    background-color: #f9f5ef;
+    background-color:   #e7decf;
+    background-color:   #e5d1b8;
+    background-color:antiquewhite;
+   
+    position: relative;
+    margin:30px;
+    padding: 20px;
+    
+}
+
+/* book img */
+.book img{
+    position: relative;
+    bottom: 50px; right:50px;
+    float: left;
+    margin-right: -30px;
+    margin-bottom: -45px;
+    border:2px solid #2b2129;
+    box-shadow: 0 10px 20px rgba(85, 105, 96, 0.4);
+    width:120px;
+    height: 180;
+}
+
+/* book name */
+.book .bookname{
+    color: #2b2129;
+    font-size: 19px;
+    text-align: center;
+    text-transform: capitalize;
+    text-shadow: 2px 2px rgb(228, 212, 184);
+    margin:5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* book auther */
+.book .auther{
+    color: #60453c;
+    margin: 10px;
+}
+
+.book .auther span{
+    font-weight: 900;
+    text-transform: capitalize;
+}
+
+.book .auther::after{
+    content: "";
+    display: block;
+    border-bottom: 2px solid #f9f5ef;
+    box-shadow: 0 1px 0px rgba(85, 105, 96, 0.7);
+    margin: auto; 
+    width: 40%;
+    position: relative;
+    left: 45px;
+    padding-top: 7px;
+}
+
+/* book category */
+.book .categories{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    
+}
+.book .categories p{
+    font-size: 14px;
+    border: 2px solid #2b2129;
+    border-radius: 20px;
+    margin: 5px;
+    padding:7px 8px;
+    background-color: #556960;
+    color: #f9f5ef;
+}
+
+
+
+/* buttons */
+.book .btn{
+    text-align: center;
+}
+.book .btn button , .readbtn{
+    background-color: #556960;
+    color: #f9f5ef;
+    font-size: 15px;
+    border: 2px solid #2b2129;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(85, 105, 96, 0.2);
+    margin: 5px;
+    padding:7px 10px;
+    cursor: pointer;
+}
+
+.readbtn{
+    font-size: 15px;
+    display: none;
+    margin: auto;
+    background-color: #dd8e5d;
+
+  }
+
+
+div .ribbon {
+   
+    font-size: 20px;
+    padding: 6px;
+    padding-left: 25px;
+   
+    position: absolute;
+    top:-18px; left:180px;
+    text-align: center;
+    background-color:#dd8e5d;
+    color: white;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 18% 50%);
+    
+  }
+  
+  

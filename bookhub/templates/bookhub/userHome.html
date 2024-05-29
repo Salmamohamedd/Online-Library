@@ -1,0 +1,113 @@
+{% extends "bookhub/userLayout.html" %}
+{% load static %}
+
+{% block content%}
+ <button class="searchbtn" onclick="window.location.href = `{% url 'userBooks' user.id %}`"><i class="fa fa-search search_icon"></i></button>
+{% endblock  %}
+
+<head>
+    {% block head %}
+    <link href="{% static 'bookhub/homepage.css' %}" rel="stylesheet">
+    {% endblock %}
+
+</head>
+
+<body>
+    {% block body %}
+        <div class="head">
+        <h1>
+            <img src="{% static 'bookhub/butterflies left.png' %}" class="header-image">
+            <i>Welcome to BookHub</i><img src="{% static 'bookhub/girl_reading.png' %}" class="header-image">
+            <img src="{% static 'bookhub/butterflies right.png' %}" class="header-image"></h1>
+    </div>
+            <div id="big_Container">
+                {% if books %}
+             <label><i>Newest Additions</i></label>
+            {% if books|length > 4 %}
+            <div class="images-container">
+                {% for book in books|slice:"0:4" %}
+                    <a href="{% url 'bookPage' book.id user.id %}"> <img src="{% static 'bookhub/' %}{{ book.cover }}" width="150" height="230"></a>
+                {% endfor %}
+            </div>
+            <div class="bookshelf">
+        
+            </div>
+            <br>
+        {% else %}
+            
+            <div class="images-container">
+                {% for book in books %}
+                    <a href="{% url 'bookPage' book.id user.id %}"> <img src="{% static 'bookhub/' %}{{ book.cover }}" width="150" height="230"></a>
+                {% endfor %}
+            </div>
+            <div class="bookshelf">
+        
+            </div>
+            <br>
+        {% endif %}
+        {% endif %}
+
+            {% if borrowed %}
+            <label><i>Recently borrowed</i></label>
+            {% if borrowed|length > 4%}
+            <div class="images-container">
+                {% for book in borrowed|slice:"0:4" %}
+                    <a href="{% url 'bookPage' book.id user.id %}"> <img src="{% static 'bookhub/' %}{{ book.cover }}" width="150" height="230"></a>
+                {% endfor %}
+                </div>
+            <div class="bookshelf">
+
+            </div>
+
+            <br>
+            {% else %}
+            <div class="images-container">
+                {% for book in borrowed %}
+                    <a href="{% url 'bookPage' book.id user.id %}"> <img src="{% static 'bookhub/' %}{{ book.cover }}" width="150" height="230"></a>
+                {% endfor %}
+                </div>
+            <div class="bookshelf">
+
+            </div>
+
+            <br>
+            {% endif %}
+            {% endif %}
+
+
+            {% if liked %}
+            <label><i>Recently liked</i></label>
+            {% if liked|length > 4%}
+            <div class="images-container">
+                {% for book in liked|slice:"0:4" %}
+                    <a href="{% url 'bookPage' book.id user.id %}"> <img src="{% static 'bookhub/' %}{{ book.cover }}" width="150" height="230"></a>
+                {% endfor %}
+                </div>
+            <div class="bookshelf">
+
+            </div>
+
+            <br>
+            {% else %}
+            <div class="images-container">
+                {% for book in liked %}
+                    <a href="{% url 'bookPage' book.id user.id %}"> <img src="{% static 'bookhub/' %}{{ book.cover }}" width="150" height="230"></a>
+                {% endfor %}
+                </div>
+            <div class="bookshelf">
+
+            </div>
+
+            <br>
+            {% endif %}
+            {% endif %}
+
+            
+        </div>
+        <!-- <script src="main_admin.js"></script> -->
+        </main>
+    {% endblock %}
+    
+</body>
+
+</html>

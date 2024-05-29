@@ -1,0 +1,67 @@
+{% extends "bookhub/adminLayout.html" %}
+{% load static %}
+
+{% block content %}
+<button class="searchbtn" onclick="window.location.href = `{% url 'adminBooks' admin.id%}`"><i class="fa fa-search search_icon"></i></button>
+{% endblock content %}
+    {% block head %}
+    <link href="{% static 'bookhub/profileAdmin.css' %}" rel="stylesheet">
+    {% endblock %}
+
+
+
+
+    {% block body %}
+    <!-- style="display: grid; align-items: center; grid-template-columns: 1 fr 1 fr 1 fr; column-gap: 5px;" -->
+    <div class="bigcontainer">
+        <div class="container1">
+            <div class="Userpic">
+                <img src="{% static 'bookhub/profile.jpg'%}" width="250" height="250" class="userimg"/>  
+                <br>
+                <button type="button" onclick="editProfile()" title="edit profile"><img src="{% static 'bookhub/icons8-edit-profile-30.png'%}" id="editicon"></button>
+            </div>
+            <div class="Userdetails">
+                <p class="outsidep">Username: <p class="insidep" id="username value">{{admin.username}}</p>  <!--mmkn n3mlha readonly 34an lma ndos 3la edit n3ml onclick y5leha msh readonly f eluser y2dr y8yr el values-->
+                <br><br>
+                <p class="outsidep">Name: <p class="insidep" id="name value">{{admin.name}}</p>
+                <br><br>
+                <!--<p class="outsidep">Gender: <input type="radio" name="gender" id="female" selected>Female <input type="radio" name="gender" id="male">Male-->
+                <p class="outsidep">Gender: <p class="insidep" id="gender value">{{admin.gender}}</p>
+                <br><br>
+                <p class="outsidep">Gmail: <p class="insidep" id="gmail value">{{admin.email}}</p>
+                <br><br>
+                <!--<p class="outsidep">Last Active: <input type="date" readonly></p>-->
+                <br><br>
+            </div>
+        </div>
+        {% if books %}
+
+        <div id="recently">
+            <h3>Recently Added:</h3>
+            <div class="recentlybooks">
+
+                {% if books|length > 4 %}
+               
+                    {% for book in books|slice:"0:4" reversed %}
+                        <img src="{% static 'bookhub/' %}{{ book.cover }}" width="150" height="230">
+                    {% endfor %}
+            {% else %}
+                
+               
+                    {% for book in books reversed %}
+                        <img src="{% static 'bookhub/' %}{{ book.cover }}" width="150" height="230">
+                    {% endfor %}
+                
+            {% endif %}
+                <a href ="{% url 'adminBooks' admin.id %}" id="recentlyborrowedbtn">see more...</a> <!--elmfrood ywdeeny 3la el list bta3t recently borrowed aw borrowed books 3amtn-->
+                <div class="bookshelf"></div>
+
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    {% comment %} <script src="{% static 'bookhub/user&adminProfiles.js'%}"></script> {% endcomment %}
+        
+    {% endblock %}
+    

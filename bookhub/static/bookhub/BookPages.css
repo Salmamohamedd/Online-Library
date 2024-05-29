@@ -1,0 +1,73 @@
+body {
+    background-color: #e7decf;
+    background-image: url(caty.png);
+    background-repeat: no-repeat;
+    background-position: 100% 10%;
+    background-size: 30%;
+
+}
+
+.bookcover {
+    width: 240px;
+    height: 350px;
+    padding: 5px;
+    border: 2px solid #60453c;
+    border-radius: 60px;
+    margin-left:70px;
+}
+
+.bookinfo {
+    width: 750px;
+    position: relative;
+    left: 342px;
+    bottom: 350px;
+    /* top: -390px; */
+    color: #60453c;
+}
+
+.bookimage {
+    position: relative;
+
+}
+
+.bookinfo .fa-heart-o,
+.bookinfo .fa-plus-square,
+.bookinfo .fa-heart {
+    text-align: center;
+    background-color: #60453c;
+    border: 1px solid #b29887;
+    border-radius: 10px;
+    color: #b29887;
+    text-decoration: none;
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+    margin-top: 7px;
+}
+
+.bookinfo .fa-heart-o:hover,
+.bookinfo .fa-plus-square:hover,
+.bookinfo .fa-heart:hover {
+    color: #45332d;
+    cursor: pointer;
+}
+
+.btnrow {
+    width: 155x;
+}
+
+.likebook,
+.unlikebook {
+    display: none;
+}
+
+.likebook,
+.unlikebook {
+    position: fixed;
+    bottom: 20px;
+    background-color: #60453c;
+    color: #b29887;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 9999;
+}

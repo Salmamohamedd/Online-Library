@@ -1,0 +1,241 @@
+{% extends "bookhub/adminLayout.html" %}
+{% load static %}
+
+{% block content %}
+<input type="text" id="input" name="search" placeholder="Search..." autocomplete="off">
+<button class="searchbtn" onclick()><i class="fa fa-search search_icon"></i></button>
+{% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {%block head%}
+  <title>Admin view books</title>
+    <link rel="stylesheet" href="{% static 'bookhub/tables.css'  %}">
+  {%endblock%}  
+</head>
+
+<body>
+  {%block body%}
+
+  <div class="header-1">
+    <h1> <img class="header-images" src="{% static 'bookhub/butterflyyy1.png' %}">All Books <img class="header-images" src="{% static 'bookhub/butterflyyy2.png' %}">
+    </h1>
+  </div>
+  <div>
+    <div class="book-tables">
+      <table id="booktable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Book Cover</th>
+            <th>Book Name</th>
+            <th class="author">Author(s)</th>
+            <th class="category">Category</th>
+            <th class="publisher">Publisher</th>
+            <th class="publish-yr">Publishing Year</th>
+            <th class="lang">Language</th>
+            <th class="pages">Pages</th>
+            <td class="with-th"><button id="addbutton" class="fa fa-plus-square-o" onclick="openForm()"
+                title="Add New Book"></button>
+              <div class="popup-form" id="myForm">
+                <form method="post" action="{% url 'adminBooks' admin.id %}" class="form-container" id="BookForm" name="addForm">
+                  <meta name="csrf-token" content="{% csrf_token %}">
+                  {% csrf_token %}
+                  <h1>Book Details</h1>
+                  <div class="form-items">
+
+                    {% comment %} <label for="BookID"><b>Book ID</b></label>
+                    <input id="id" type="number" placeholder="Book ID" name="BookID" required>
+
+                    <br><br> {% endcomment %}
+
+                    <input type="hidden" name="form_name" value="addForm">
+
+                    <label for="bookCover"><b>Book Cover</b></label>
+                    <input id="cover" type="file" required accept=".jpg, .jpeg, .png" name="BookCover">
+
+                    <br><br>
+
+                    <label for="BookName"><b>Book Name</b></label>
+                    <input id="bookname" type="text" placeholder="Book Name" name="BookName" autocomplete="off" required>
+
+                    <br><br>
+
+                    <label for="Author"><b>Author(s)</b></label>
+                    <input id="author" type="text" placeholder="Author's Name" name="AuthorName" required>
+
+                    <br><br>
+
+                    <label for="Category"><b>Category</b></label>
+                    <input id="category" type="text" placeholder="Category" name="Category" required>
+
+                    <br><br>
+
+                    <label for="Publisher"><b>Publisher</b></label>
+                    <input id="publisher" type="text" placeholder="Publisher" name="Publisher" required>
+
+                    <br><br>
+                    <label for="Publishing-Year"><b>Publishing Year</b></label>
+                    <input id="year" type="text" placeholder="PublishingYear" name="Publishing-Year" required>
+
+                    <br><br>
+                    <label for="Language"><b>Language</b></label>
+                    <input id="language" type="text" placeholder="Language" name="Language" required>
+
+                    <br><br>
+                    <label for="Pages"><b>Pages</b></label>
+                    <input id="page" type="number" placeholder="Pages" name="Pages" required>
+
+                    <br><br>
+
+                    <label for="Description"><b>Book Description</b></label>
+                    <textarea id="textdesc" class="text-area" type="text" placeholder="Description" name="Description"
+                      required></textarea>
+
+                    <br><br>
+                  </div>
+
+                  <button type="submit" class="closebtn">Add</button>
+                  <button type="reset" class="closebtn">Reset</button>
+                  <button type="button" class="closebtn" onclick="closeForm()">Cancel</button>
+
+                </form>
+              </div>
+            </td>
+            </td>
+          </tr>
+        </thead>
+        <tbody id="bodyy">
+          {% if books %}
+            {% for book in books %}
+            <tr class="{% cycle 'odd-row' 'even-row' %}">
+                <td class="with-th">{{ book.id }}</td>
+                <td id="BOOK1"><img onclick="openDescription(this)" class="bookimg" src= "{% static 'bookhub/' %}{{ book.cover }}"
+                    title="Click to view Description"/>
+                </td>
+                <td>{{ book.name }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.category }}</td>
+                <td>{{ book.publisher }}</td>
+                <td>{{ book.year }}</td>
+                <td>{{ book.language }}</td>
+                <td>{{ book.pages }}</td>
+                <td class="book-des">{{ book.description }}</td>
+                <td class="with-th"><button class="fa fa-edit" title="Edit" onclick="OpenEditBook(this)"></button>
+                  <button class="fa fa-trash-o" title="Delete" onclick="openDelete(this)"></button>
+                </td>
+              </tr>
+          
+            {% endfor %}
+          {% endif %}              
+
+          
+        </tbody>
+      </table>
+    </div>
+    <p class="back-top"> <a href="#" class="back-to-top"> Back to Top</a> </p>
+  </div>
+
+  <div id="descrip">
+    <div class="descrip-container">
+      <p class="desc-title">Book Description</p>
+      <p id="book-description"></p>
+      <button class="description-btn" onclick="closeDescription()">Close</button>
+    </div>
+  </div>
+
+  <div id="DeleteAlert">
+    <div class="DeleteContainer">
+      <p id="delete-msg"></p>
+      <p id="delete-value" style="display: none;"></p>
+      <form action="{% url 'adminBooks' admin.id %}" method="post" name="deleteBook" id="deleteform">
+      {% csrf_token %}
+      <input id="id2" type="number" placeholder="Book ID" name="BookID" hidden>
+      <button type="button" class="del-btn" onclick="closeDelete()">Cancel</button>
+      <button class="del-btn" type="submit">Delete</button>
+      <input type="hidden" name="form_name" value="deleteForm">
+
+      </form>
+    </div>
+  </div>
+
+  <div id="editkey">
+    <p id="editkeyvalue"></p>
+  </div>
+
+  <div class="popupform" id="Edit">
+    <form method="post" action="{% url 'adminBooks' admin.id %}" name="editForm" class="formcontainer">
+      <h1>Book Details</h1>
+      <div id="Edit-form">
+        {% csrf_token %}
+        <label for="BookID"><b></b></label>
+        <input id="id1" type="number" placeholder="Book ID" name="BookID" hidden>
+
+        <br><br> 
+        
+        <label for="bookCover"><b>Book Cover</b></label>
+        <input id="cover1" type="file" accept=".jpg, .jpeg, .png" name="BookCover" >
+
+        <br><br>
+
+        <label for="BookName"><b>Book Name</b></label>
+        <input id="bookname1" type="text" placeholder="Book Name" name="BookName" required>
+
+        <br><br>
+
+        <label for="Author"><b>Author(s)</b></label>
+        <input id="author1" type="text" placeholder="Author's Name" name="AuthorName" required>
+
+        <br><br>
+
+        <label for="Category"><b>Category</b></label>
+        <input id="category1" type="text" placeholder="Category" name="Category" required>
+
+        <br><br>
+
+        <label for="Publisher"><b>Publisher</b></label>
+        <input id="publisher1" type="text" placeholder="Publisher" name="Publisher" required>
+
+        <br><br>
+        <label for="Publishing-Year"><b>Publishing Year</b></label>
+        <input id="year1" type="text" placeholder="Publishing-Year" name="Publishing-Year" required>
+
+        <br><br>
+        <label for="Language"><b>Language</b></label>
+        <input id="language1" type="text" placeholder="Language" name="Language" required>
+
+        <br><br>
+        <label for="Pages"><b>Pages</b></label>
+        <input id="page1" type="number" placeholder="Pages" name="Pages" required>
+
+        <br><br>
+
+        <label for="Description"><b>Book Description</b></label>
+        <textarea id="textdesc1" class="text-area" type="text" placeholder="Description" name="Description"
+          required></textarea>
+
+        <br><br>
+      </div>
+      <button type="submit" class="closebtn">Edit</button>
+      <button type="reset" class="closebtn">Reset</button>
+      <button type="button" class="closebtn" onclick="CloseEditBook()">Cancel</button>
+      <input type="hidden" name="form_name" value="editForm">
+    </form>
+  </div>
+
+
+  {% comment %} <script src="tablesButton.js"></script>
+  <script src="addbooks.js"></script>
+  <script src="searchadmin.js"></script> {% endcomment %}
+  {% comment %} <script src= "{% static 'bookhub/addbook.js'  %}"></script> {% endcomment %}
+  <script src= "{% static 'bookhub/adminBooks.js' %}" data-books="{{ books_json }}" data-admin="{{ admin.id }}" book-cover="{% static 'bookhub/' %}" token="{% csrf_token %}"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+ {% extends 'bookhub/userLayout.html'%}
+ {% load static %}
+
+{% comment %}
+
+    {% block head %}
+  
+    <link rel="stylesheet" href="{% static 'bookhub/booksUser.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    {% endblock %}
+{% block content %}
+<input type="text" id="input" name="search" placeholder="Search..." autocomplete="off">
+
+{% endblock %}
+
+{% block body %}
+<body class="allbooks">
+    <div class="headerrr">
+        <h1> <img class="header-images" src=" {% static 'bookhub/butterflyyy1.png' %}"> All Books <img class="header-images"
+                src="{% static 'bookhub/butterflyyy2.png' %}"></h1>
+                
+    <div id="empty"></div>
+            </div>
+
+    <section id="lists">
+        {% for book in books %}
+            <div class="book">
+                <img src="{% static 'bookhub/' %}{{ book.cover }}">
+                <span class="ribbon"> {{ book.availability }} </span>
+                <a class="bookname" href="{% url 'bookPage' book.id user.id %}" target="_blank" onclick="sendVal(this.innerHTML)">{{ book.name }}</a>
+                <p class="auther"> by <span>{{ book.author }}</span></p>
+                <p class="description">{{ book.description }}</p>
+                <a href="{% url 'bookPage' book.id user.id %}" class="readbtn"> Read More.. </a>
+                <div class="categories">
+                    <p> {{ book.category }} </p>
+                </div>
+                <div class="btn">
+                    {% if book.availability == 'Unavailable' %}
+                    <button class="borrowbtn" type="button" disabled> Borrow </button>
+                {% else %}
+                    <button class="borrowbtn" type="button" onclick="location.href='{% url 'borrowBook' book.id user.id %}'"> Borrow </button>
+                {% endif %}
+
+                {% if book in liked %}
+                    <button class="fa fa-heart likebutton" id="like{{book.id}}" data-bookid="{{ book.id }}" data-user="{{ user.id }}" book-name="{{ book.name }}"></button>
+                {% else %}
+                    <button class="fa fa-heart-o likebutton" id="like{{book.id}}" data-bookid="{{ book.id }}" data-user="{{ user.id }}" book-name="{{ book.name }}"></button>
+                {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        </section>
+        <div id="likepopup"></div>
+        <script src= "{% static 'bookhub/booksUser.js' %}"></script>
+        <script src="{% static 'bookhub/usersearch.js' %}" data-books="{{ books_json }}" data-likedbooks="{{ liked_json }}" data-user="{{ user.id }}" book-cover="{% static 'bookhub/' %}" userbookJS="{% static 'bookhub/' %}"></script>
+
+    </body>
+
+{% endblock %} {% endcomment %}
+
+{% block content %}
+<input type="text" id="input" name="search" placeholder="Search..." autocomplete="off">
+<button class="searchbtn" id="searchbtnn" onclick()=""><i class="fa fa-search search_icon"></i></button>
+{% endblock %}
+
+    {% block head %}
+  
+    <link rel="stylesheet" href="{% static 'bookhub/booksUser.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    {% endblock %}
+
+
+{% block body %}
+<body class="allbooks">
+    <div class="headerrr">
+        <h1> <img class="header-images" src=" {% static 'bookhub/butterflyyy1.png' %}"> All Books <img class="header-images"
+                src="{% static 'bookhub/butterflyyy2.png' %}"></h1>
+                
+    <div id="empty"></div>
+            </div>
+
+    <section id="lists">
+        {% for book in books %}
+            <div class="book">
+                <img src="{% static 'bookhub/' %}{{ book.cover }}" alt="{{book.name}}">
+                <a class="bookname" href="{% url 'bookPage' book.id user.id %}" target="_blank" onclick="sendVal(this.innerHTML)">{{ book.name }}</a>
+                <p class="auther"> by <span>{{ book.author }}</span></p>
+                <p class="description">{{ book.description }}</p>
+                <a href="{% url 'bookPage' book.id user.id %}" class="readbtn" id="readbtn" > Read more.. </a>
+                <div class="categories">
+                    <p> {{ book.category }} </p>
+                </div>
+                <div class="btn">
+                    {% if book.availability == 'Unavailable' %}
+                    <span class="ribbon" id="rib{{book.id}}" style="background-color:#60453c">{{ book.availability }}</span>
+                    <button class="borrowbtn" type="button" disabled> Borrow </button>
+                {% else %}  
+                    <span class="ribbon">{{ book.availability }}</span>
+                    <button class="borrowbtn" id="brw{{book.id}}" data-bookid="{{ book.id }}" data-user="{{ user.id }}" book-name="{{ book.name }}"> Borrow </button>
+                {% endif %}
+
+                {% if book in liked %}
+                    <button class="fa fa-heart likebutton" id="like{{book.id}}" data-bookid="{{ book.id }}" data-user="{{ user.id }}" book-name="{{ book.name }}"></button>
+                {% else %}
+                    <button class="fa fa-heart-o likebutton" id="like{{book.id}}" data-bookid="{{ book.id }}" data-user="{{ user.id }}" book-name="{{ book.name }}" ></button>
+                {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        </section>
+        <div id="likepopup"></div>
+        {% comment %} <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> {% endcomment %}
+
+        <p class="back-top"> <a href="#" class="back-to-top"> Back to Top</a> </p>
+
+        {% comment %} <script src= "{% static 'bookhub/booksUser.js' %}"></script> {% endcomment %}
+        <script src="{% static 'bookhub/usersearch.js' %}" data-books="{{ books_json }}" data-likedbooks="{{ liked_json }}" data-user="{{ user.id }}" book-cover="{% static 'bookhub/' %}"></script>
+
+
+    </body>
+        
+
+{% endblock %}

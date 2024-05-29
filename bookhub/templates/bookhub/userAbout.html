@@ -1,0 +1,48 @@
+{% extends "bookhub/userLayout.html" %}
+{% load static %}
+
+{% block content%}
+ <button class="searchbtn" onclick="window.location.href = `{% url 'userBooks' user.id %}`"><i class="fa fa-search search_icon"></i></button>
+{% endblock  %}
+
+    <head>
+        {% block head %}
+        <link rel="stylesheet" href="{% static 'bookhub/aboutUs.css' %}">
+        {% endblock %}
+    </head>
+    {% block body %}
+    <main>
+        <h1 class="header"> About Us</h1>
+        <h3>Welcome to our online library!</h3>
+
+        <img src="{% static 'bookhub/img6-removebg-preview.png' %}" alt="aboutusimg" class="aboutus">
+
+        <article class="a1">
+            <h4 class="title">Us</h4>
+            <p> We are a team of book lovers who are passionate about sharing our love of reading with the world. <br><br> Our library offers a wide selection of books across various genres, from fiction to non-fiction, and everything in between.</p>
+        </article>
+            
+        <article class="a2">
+            <h4 class="title">Our Mission</h4>
+            <p> Our mission is to make reading accessible to everyone, no matter where they are in the world.
+                <br><br> We believe that books have the power to transport us to new worlds, expand our minds, and inspire us to be better versions of ourselves.
+                <br><br>That's why we've worked hard to create a user-friendly platform that makes it easy for you to find, add and enjoy the books you love.</p>
+        </article>
+            
+        <article class="a3">
+            <h4 class="title">Bibliosphere</h4>
+            <p>We hope that our website can help thousands of readers discover new books and authors.
+               <br><br> We're proud to be a part of the global reading community, and we're committed to making a positive impact on the world through the power of books.</p>
+        </article>
+
+        <article class="end">
+            <h4> <div class="thanks">Thank you for choosing our online library. </div> <div class="hope">We hope you find something that sparks your imagination and brings you joy. </div></h4>
+            <div class="contact">
+                <a href="{% url 'userContact' user.id %}">
+                    <button class="contactbtn" >Contact Us &#9993;</button>
+                </a>        
+        </div>
+        </article>
+
+    </main>
+    {% endblock %}

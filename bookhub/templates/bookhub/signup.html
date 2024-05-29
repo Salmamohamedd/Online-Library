@@ -1,0 +1,113 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>sign up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'bookhub/sign_up.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container"> 
+         {% if message %}
+            <script>
+                window.alert("{{ message }}")
+            </script>
+        {% endif %} 
+        <form action=" {% url 'signup' %} " method="post" id="theForm">
+            {% csrf_token %}
+            <h1 class="R">Register</h1>
+            <div class="input-box">
+            <div class="box">
+                <input type="text" id="F_name" name="name" placeholder="name" required autofocus >
+                <i class="fa fa-user icon"></i>
+            </div>
+            <div class="box">
+                
+                <input type="text" id="user_name" name="username" placeholder="username" required>
+            
+                <i class="fa fa-user icon"></i>
+            </div>
+            </div>
+
+            <!--____________________________________________________________________________________________-->
+            
+            <div class="input-box">
+            <div class="box">
+                <input type="email" id="email" name="email" placeholder="email">
+                <i class="fa fa-envelope icon"></i>
+            </div>
+            <div class="box">
+                <input type="tel" id="number" name="number" placeholder="phone number">
+                <i class="fa fa-phone"></i>
+            </div>
+            </div>
+
+            <!--_____________________________________________________________________________________________-->
+            
+            <div class="input-box">
+            <div class="box">
+                <input type="password" id="password" name="password" placeholder="password" required >
+                <i  class="fa">&#xf023;</i>
+            </div>
+            <div class="box">
+                <input type="password" id="con_pass" name="con_pass" placeholder="confirm password"  required>
+                <i  class="fa">&#xf023;</i>
+            </div>
+            </div>
+
+            <!--________________________________________________________________________________________________-->
+        
+            
+            
+            <br><br>
+
+            <div class="select">
+                <i class="fa fa-venus-mars " id="gender"></i>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">male</label>
+                <input type="radio"  id="female" name="gender" value="female">
+                <label for="female">female</label>
+
+            </div>
+            <br>
+            
+            <div class="select">
+                <i class="fa fa-check-square-o"></i>
+                <input type="radio" id="user" name="type" value="user">
+                <label for="user">user</label>
+                <input type="radio"  id="admin" name="type" value="admin">
+                <label for="admin">admin</label>
+
+            </div> 
+
+            <!--________________________________________________________________________________________________-->
+        
+        
+    {% comment %} 
+        <a href="{% url 'adminHome' %}">
+            <button type="submit">Sign up as Admin</button>
+    
+        <br> {% endcomment %}
+        
+            <button type="button" class="submitbtn" onclick="signup()">Sign up</button>
+    
+        <!--________________________________________________________________________________________________-->
+
+        <p>
+            Already have an account?
+            <a href="{% url 'signin' %}">sign_in</a>
+        </p>
+
+        <script src="{% static 'bookhub/signup.js' %}"></script> 
+    
+        
+        
+</form>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+
+  
+
+*{
+    margin: 0 ;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url(mainimg.jpg) ;
+    background-position: center;
+
+}
+.container{
+    width: 750px;
+    padding: 40px 30px 25px ;
+    background-color: darkgray;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.208);
+    backdrop-filter: blur(5px);
+    border-radius: 40px;
+   border: 3px solid rgba(0, 0, 0, 0.5);
+   box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+}
+
+.container h1{
+   text-align: center;
+   padding: 10px;
+   margin-bottom: 15px;
+   border-bottom: 2px solid rgb(6, 6, 6);
+}
+
+.container .input-box{
+    display:flex;
+    justify-content: space-between;
+    
+}
+
+.input-box .box{
+    position: relative;
+    width:48%;
+    height: 50px;
+    margin: 10px 0;
+}
+
+.input-box .box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+   outline: none;
+   font-size: 16px;
+   color: black;
+   border-radius: 10px;
+   padding: 15px 15px 15px 40px;
+   
+}
+.input-box .box input::placeholder{
+    color: black;
+}
+
+.input-box .box i{
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.select{
+    text-align: center;
+    font-size: large;
+}
+
+button{
+width: 100%;
+height: 40px;
+margin-bottom: 10px;
+border-radius: 40px;
+border: none;
+font-size: 1em;
+text-transform: uppercase;
+cursor: pointer;
+transition: 0.5s;
+
+
+}
+button:hover{
+background: rgba(0,0, 0, 0.4);
+
+}
+
+p{
+text-align: center;
+
+}
+
+a{
+text-decoration: none;
+color: black;
+font-weight:700;
+}
+a:hover{
+text-decoration: underline;
+font-style: italic;
+color: rgb(106, 57, 21);
+}
+
+
+
+
+
+
+

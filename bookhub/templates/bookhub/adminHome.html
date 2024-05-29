@@ -1,0 +1,78 @@
+{% extends "bookhub/adminLayout.html" %}
+{% load static %}
+
+{% block content%}
+<button class="searchbtn" onclick="window.location.href = `{% url 'adminBooks' admin.id%}`"><i class="fa fa-search search_icon"></i></button>
+{% endblock  %}
+
+    {% block head %}
+    <link href="{% static 'bookhub/homepage.css' %}" rel="stylesheet">
+    {% endblock %}
+
+
+
+
+    {% block body %}
+        <div class="head">
+        <h1>
+            <img src="{% static 'bookhub/butterflies left.png' %}" class="header-image">
+            <i>Welcome to BookHub</i><img src="{% static 'bookhub/girl_reading.png' %}" class="header-image">
+            <img src="{% static 'bookhub/butterflies right.png' %}" class="header-image"></h1>
+    </div>
+            <div id="big_Container">
+                {% if books %}
+                <label><i>Newest Additions</i></label>
+               {% if books|length > 4 %}
+               <div class="images-container">
+                   {% for book in books|slice:"0:4" %}
+                       <img src="{% static 'bookhub/' %}{{ book.cover }}" width="150" height="230">
+                   {% endfor %}
+               </div>
+               <div class="bookshelf">
+           
+               </div>
+               <br>
+           {% else %}
+               
+               <div class="images-container">
+                   {% for book in books %}
+                       <img src="{% static 'bookhub/' %}{{ book.cover }}" width="150" height="230">
+                   {% endfor %}
+               </div>
+               <div class="bookshelf">
+           
+               </div>
+               <br>
+           {% endif %}
+           {% endif %}
+   
+               {% if books %}
+               <label><i>Trending</i></label>
+               {% if books|length > 4%}
+               <div class="images-container">
+                   {% for book in books|slice:"0:4" reversed %}
+                       <img src="{% static 'bookhub/' %}{{ book.cover }}" width="150" height="230">
+                   {% endfor %}
+                   </div>
+               <div class="bookshelf">
+   
+               </div>
+   
+               <br>
+               {% else %}
+               <div class="images-container">
+                   {% for book in books reversed %}
+                        <img src="{% static 'bookhub/' %}{{ book.cover }}" width="150" height="230">
+                   {% endfor %}
+                   </div>
+               <div class="bookshelf">
+   
+               </div>
+   
+               <br>
+               {% endif %}
+               {% endif %}
+   
+            </div>
+    {% endblock %}
+    

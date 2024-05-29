@@ -1,0 +1,133 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    width: 100%;
+    height: 20vh;
+    background: linear-gradient(
+      to bottom,
+      #e7decf 0%,
+      #e7decf 20%,
+      #e7decf 20%,
+      #e7decf 100%
+    );
+
+    overflow-x: hidden;
+}
+
+.windowcontainer {
+    position: relative; 
+}
+
+.containerr {
+    background-color: #556960;
+    width: 1200px;
+    height: 630px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 67px;
+
+    border-radius: 20px;
+    box-shadow: 10px 10px 15px;
+
+    position: relative; /*34an a3ml elly gwah absolute mn 8eer ma ybozo*/
+}
+
+.formspace {
+    position: absolute;
+    left :54%;  /*de percent mn na7yt el right b3dha bybd2 y7ot el div*/
+    top : 8%;
+
+    width: 380px;
+    height:500px;
+
+    border-radius: 20px;
+    padding:10px 25px;
+    box-shadow: 10px 10px 15px;
+
+    background-color: #e7decf;
+
+}
+
+.formspace h1{
+    text-align: center;
+    color:#60453c;
+    font-size: 30px;
+    font-weight: 500;  /*da y5ly el kelma rofy3a shwya*/
+    margin-bottom: 12px;
+}
+
+.formspace input[type="text"] , .commentsbox{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 4px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #b29887; /*b29887--60453c--bf8b59--556960--2B2129*/
+    background-color: #e7decf;
+}
+
+.formspace input[type="reset"] {
+    border: none;
+    margin: 2px 2px;
+    padding: 10px 10px;
+
+    color:#ffffff;
+    background-color: #60453c;
+    cursor: pointer;
+
+    border-radius: 20px;
+
+    width: 200px;
+
+    position:absolute;
+    top: 82%;
+    left:26%;
+}
+
+.formspace input[type="reset"]:hover {
+    background-color: #b29887;
+}
+
+.formspace label {
+    color: #60453c;
+}
+
+.icons a img{
+    padding: 0 2px;
+    border-radius: 50px;
+    width: 23px;
+    height: 23px;
+}
+
+.formspace .icons {
+    margin: 10px 0 0 10px;
+    position: absolute;
+    left: 37.3%;
+    top: 90%;
+}
+
+.divimage {
+    position: absolute;
+    left: 8%;
+    top : 19%;
+
+    width: 270px;
+
+    border-radius: 50px;
+    background-color: #556960; /*34an mybansh ay froo2 kda*/
+}
+
+.divimage img {
+    border-radius:50px;
+    width:380px;
+    height:380px;
+    background-color: #556960;
+}
+
+.footer {
+    position: relative;
+    top: 100%;
+}

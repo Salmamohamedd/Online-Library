@@ -1,0 +1,244 @@
+body {
+    /* background-color: #e7decf; */
+    background-image: url(ward.jpg);
+    background-repeat: no-repeat;
+    background-size: 1523px 777px;
+    background-attachment: fixed;
+    background-position-y: top;
+}
+
+.headerrr {
+    /* div including header */
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(backyy.png);
+    padding: 25px;
+    background-position: 30%;
+    background-attachment: scroll;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    color: #60453c;
+
+}
+
+.header-images {
+    width: 80px;
+    height: 80px;
+    vertical-align: -60%;
+}
+
+/* .allbooks .headerrr {
+    font-size: 50px;
+} */
+
+#lists {
+    display: grid;
+    grid-template-columns: repeat(4, 23%);
+    gap: 50px;
+    padding: 10px;
+    margin: auto 60px;
+}
+
+.book {
+    position: relative;
+}
+
+#lists .book {
+    border: 2px solid #2b2129;
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
+    background-color: #e5d1b8;
+    position: relative;
+    margin: 25px 0px;
+    padding: 20px;
+    border-radius: 20px;
+    /* margin-right: 10px; */
+}
+
+.book:hover {
+    transform: translateY(-10px);
+}
+
+/* book img */
+.book img {
+    position: relative;
+    /* bottom: 50px; */
+    right: 50px;
+    float: left;
+    margin-right: -38px;
+    margin-bottom: 5px;
+    margin-top: -50px;
+    border: 2px solid #2b2129;
+    box-shadow: 0 10px 20px rgba(85, 105, 96, 0.4);
+    width: 110px;
+    height: 160px;
+    border-radius: 10px;
+}
+
+/* book name */
+.book .bookname {
+    color: #2b2129;
+    font-size: 19px;
+    text-align: center;
+    text-transform: capitalize;
+    text-shadow: 2px 2px rgb(228, 212, 184);
+    margin: auto;
+    /* margin-left: 3px; */
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    right: -12px;
+}
+
+/* book auther */
+.book .auther {
+    color: #60453c;
+    margin: 10px;
+}
+
+.book .auther span {
+    font-weight: 900;
+    text-transform: capitalize;
+}
+
+.book .auther::after {
+    content: "";
+    display: block;
+    border-bottom: 2px solid #f9f5ef;
+    box-shadow: 0 1px 0px rgba(85, 105, 96, 0.7);
+    margin: auto;
+    width: 40%;
+    position: relative;
+    left: 45px;
+    padding-top: 7px;
+}
+
+/* book category */
+.book .categories {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.book .categories p {
+    font-size: 14px;
+    border: 2px solid #2b2129;
+    border-radius: 20px;
+    margin: 10px;
+    padding: 7px 8px;
+    background-color: #556960;
+    color: #f9f5ef;
+}
+
+
+
+/* buttons */
+.book .btn {
+    text-align: center;
+
+}
+
+.book .btn button {
+    background-color: #556960;
+    color: #f9f5ef;
+    font-size: 15px;
+    border: 2px solid #2b2129;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(85, 105, 96, 0.2);
+    margin: 5px;
+    padding: 7px 10px;
+    cursor: pointer;
+
+}
+
+.readbtn {
+    font-size: 15px;
+    display: none;
+    margin: auto;
+    color: #dd8e5d;
+
+}
+
+.readbtn:hover {
+    color: #753e1c;
+}
+
+div .ribbon {
+
+font-size: 20px;
+
+padding: 6px;
+
+padding-left: 25px;
+
+position: absolute;
+
+top: -18px;
+
+right: -1.5px;
+
+text-align: center;
+
+background-color: #dd8e5d;
+
+color: white;
+
+clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 18% 50%);
+
+border-radius: 5px;
+}
+
+.btn button:hover {
+    color: #22322a;
+}
+
+.btn button[disabled] {
+    color: #22322a;
+    background-color: #464f4b;
+    cursor: default;
+}
+
+#likepopup {
+    display: none;
+    align-items: center;
+    background-color: #60453c;
+    color: #b29887;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 9999;
+    width: 500px;
+    position: fixed;
+    bottom: 50px;
+    left: 30%;
+    text-align: center;
+}
+
+#empty{
+    display: none;
+    margin-top: 200px;
+}
+
+.description{
+    margin:10px
+}
+
+.back-top {
+    text-align: center;
+}
+
+.back-to-top{
+    text-align: center;
+    cursor: pointer;
+    background-color: #60453c;
+    border: 1px solid #b29887;
+    border-radius: 10px;
+    color: #b29887;
+    text-decoration: none;
+    padding: 5px;
+    font-size: 20px;
+}

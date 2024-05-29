@@ -1,0 +1,278 @@
+body {
+    /* background-color: #e7decf; */
+    background-image: url(ward.jpg);
+    background-repeat: no-repeat;
+    background-size: 1523px 777px;
+    background-attachment: fixed;
+    background-position-y: top;
+}
+
+
+.header-1 {
+    /* div including header */
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(backyy.png);
+    padding: 25px;
+    background-position: 30%;
+    background-attachment: scroll;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    color: #60453c;
+
+}
+
+.header-images {
+    width: 80px;
+    height: 80px;
+    vertical-align: -60%;
+}
+
+.book-tables {
+    /*div including table*/
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table {
+    /*book table*/
+    /* border: 10px solid rgb(72, 90, 60); */
+    table-layout: auto;
+    width: 100%;
+    border-radius: 5px;
+    border-spacing: 0px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    color: #2b2129;
+}
+
+.bookimg {
+    width: 120px;
+    height: 170px;
+    border-radius: 10px;
+}
+
+.bookimg:hover {
+    cursor: pointer;
+}
+
+table td {
+    padding: 10px;
+    background-color: #e5d1b8;
+    border: 1px solid #60453c;
+
+}
+
+
+table th,
+.with-th:first-child,
+.with-th:last-child {
+    background-color: #b29887;
+    border: 1px solid #60453c;
+    border-radius: 2px;
+    text-align: center;
+    color: #60453c;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.even-row td {
+    background-color: #e7decf;
+}
+
+.odd-row td {
+    background-color: #e5d1b8;
+}
+
+table .fa-edit,
+table .fa-book,
+table .fa-plus-square {
+    margin: 10px;
+}
+
+table .fa-trash-o,
+table .fa-edit,
+table .fa-heart,
+table .fa-heart-o,
+table .fa-book,
+table .fa-plus-square {
+    width: 30px;
+    height: 30px;
+    color: #b29887;
+    /* background-color: #b29887; */
+    background-color: #60453c;
+}
+
+table .fa-plus-square-o {
+    width: 40px;
+    height: 40px;
+    color: #b29887;
+    /* background-color: #b29887; */
+    background-color: #60453c;
+}
+
+table .fa-edit:hover,
+table .fa-trash-o:hover,
+table .fa-plus-square-o:hover,
+table .fa-heart:hover,
+table .fa-heart-o:hover,
+table .fa-book:hover,
+.del-btn:hover,
+.closebtn:hover,
+.fa-plus-square:hover {
+    color: #45332d;
+    cursor: pointer;
+}
+
+/* span {
+    display: none;
+} */
+
+table button,
+.formcontainer button {
+    border: 1px solid #e5d1b8;
+    border-radius: 5px;
+}
+
+.author,
+.publish-yr,
+.borrow-category,
+.liked-category {
+    width: 130px;
+}
+
+.lang {
+    width: 95px;
+}
+
+.borrow-name {
+    width: 300px;
+}
+
+.popup-form,
+#DeleteAlert,
+#RemoveLiked,
+#descrip,
+.popupform,
+#ReturnBook {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #45332d99;
+    overflow: auto;
+    display: none;
+}
+
+.form-container,
+.DeleteContainer,
+.RemoveContainer,
+.descrip-container,
+.formcontainer,
+.ReturnContainer {
+    background-color: #b29887;
+    color: #60453c;
+    margin: 8% auto;
+    margin-bottom: 0%;
+    padding: 20px;
+    padding-top: 5px;
+    border: 1px solid #60453c;
+    border-radius: 10px;
+    width: 30%;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.descrip-container {
+    color: #2b2129;
+}
+
+.form-container,
+.formcontainer {
+    background-image: url(catplant.png);
+    background-position: 190%;
+    background-repeat: no-repeat;
+}
+
+.form-items,
+#Edit-form {
+    text-align: left;
+    margin-left: 0px;
+}
+
+form label {
+    padding-left: 0px;
+    text-align: left;
+}
+
+.form-container button,
+.formcontainer button {
+    color: #b29887;
+    background-color: #60453c;
+}
+
+/* .show {
+    display: block;
+} */
+.back-top {
+    text-align: center;
+}
+
+.back-to-top,
+.del-btn,
+.description-btn {
+    text-align: center;
+    cursor: pointer;
+    background-color: #60453c;
+    border: 1px solid #b29887;
+    border-radius: 10px;
+    color: #b29887;
+    text-decoration: none;
+    padding: 5px;
+}
+
+.book-des,
+#descrip {
+    display: none;
+}
+
+.text-area {
+    width: 157px;
+    height: 21px;
+}
+
+.desc-title {
+    color: #60453c;
+    font-size: larger;
+}
+
+.text-area {
+    max-width: 426px;
+}
+
+#editkey,
+.likebook,
+.unlikebook {
+    display: none;
+}
+
+.likebook,
+.unlikebook {
+    position: fixed;
+    bottom: 20px;
+    background-color: #60453c;
+    color: #b29887;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 9999;
+}

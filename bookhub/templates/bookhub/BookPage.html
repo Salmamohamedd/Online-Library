@@ -1,0 +1,30 @@
+{% extends 'bookhub/userLayout.html' %}
+{% load static %}
+
+{% block content %}
+<button class="searchbtn" id="searchbtnn" onclick()><i class="fa fa-search search_icon"></i></button>
+{% endblock %}
+
+    {% block head%}    <link rel="stylesheet" href="{% static 'bookhub/bookpages.css' %}">
+{% endblock %}
+
+{% block body %}
+<div id="bookPageContainer">
+        <div class="bookimage">
+            <img class="bookcover" width="200" height="250" src= "{% static 'bookhub/' %}{{ book.cover }}">    
+        </div>
+
+    <div class="bookinfo">
+        <p> <b>Book Title: </b> <span>{{book.name}}</span></p>
+        <p> <b>Author(s):</b> {{book.author}} </p>
+        <p><b>Category:</b> {{book.category}}</p>
+        <p><b>Publisher:</b> {{book.publisher}}</p>
+        <p><b>Published in:</b> {{book.year}}</p>
+        <p><b>Pages:</b> {{book.pages}}</p>
+        <p><b>Language:</b> {{book.language}}</p>
+        <p><b>Description:</b> {{book.description}}</p>
+        
+    </div>
+</div>
+   
+   {% endblock %}

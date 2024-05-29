@@ -1,0 +1,51 @@
+{% extends "bookhub/adminLayout.html" %}
+{% load static %}
+
+{% block content%}
+<button class="searchbtn" onclick="window.location.href = `{% url 'adminBooks' admin.id%}`"><i class="fa fa-search search_icon"></i></button>{% endblock  %}
+
+    <head>
+        {% block head %}
+        <link rel="stylesheet" href="{% static 'bookhub/contact_usAdmin.css' %}">
+        {% endblock %}
+    </head>
+    {% block body %}
+    <body>
+        <div class="windowcontainer">
+            <div class="containerr"> 
+                <div class="divimage"><img src="{% static 'bookhub/Free_Vector___Floral_letter_sticker__green_stationery_illustration_vector-removebg-preview.png' %}" ></div>
+                <div class="formspace">
+                    <h1>Contact Us</h1>
+                    <form id="contactus_form" > <!--action hn7ot feh hnb3t data elform 3la eh-->
+                       
+                        <label>Username</label>
+                        <br>
+                        <input id="username" type="text" name="contactUsername" required>
+                        <br><br>
+                        <label>Mobile Number</label>
+                        <br>
+                        <input id="mobile number" type="text" name="contactMobNum" minlength="5">
+                        <br><br>
+                        <label>E-mail</label>
+                        <br>
+                        <input id="email" type="text" name="contactEmail" placeholder="example@mydomain.com" required>
+                        <br><br>
+                        <label>Comments</label>
+                        <br>
+                        <textarea id="comment"  name="contactComment" class="commentsbox" placeholder="Type your problem here"></textarea>
+                        <br><Br>
+                        <input type="reset" value="Send" onclick="sendMessage()">
+                    </form>
+                    <div class="icons">
+                        <a href="#" class="icon"><img src="{% static 'bookhub/FBlogo.jpg' %}" width="30" height="30"></a>
+                        <a href="#" class="icon"><img src="{% static 'bookhub/instalogo.png' %}" width="30" height="30"></a>
+                        <a href="#" class="icon"><img src="{% static 'bookhub/twitterlogo.jpg' %}" width="30" height="30"></a>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        <script src="{% static 'bookhub/contact_us.js' %}"></script>
+    </body>
+    {% endblock %}

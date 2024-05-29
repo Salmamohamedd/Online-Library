@@ -1,0 +1,82 @@
+{% extends "bookhub/userLayout.html" %}
+{% load static %}
+
+{% block content %}
+<input type="text" id="input" name="search" placeholder="Search..." autocomplete="off">
+<button class="searchbtn" onclick()><i class="fa fa-search search_icon"></i></button>
+{% endblock %}
+
+<head>
+    {% block head %}
+    <link href="{% static 'bookhub/tables.css' %}" rel="stylesheet">
+    {% endblock %}
+
+</head>
+
+<body>
+    {%block body%}
+
+  <div class="header-1">
+    <h1> <img class="header-images" src="{% static 'bookhub/butterflyyy1.png' %}">Liked Books <img class="header-images" src="{% static 'bookhub/butterflyyy2.png' %}">
+    </h1>
+  </div>
+  <div>
+    <div class="book-tables">
+      <table id="booktable">
+        <table id="BorrowedTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cover</th>
+                    <th class="borrow-name">Book Name</th>
+                    <th>Author</th>
+                    <th class="borrow-category">Category</th>
+                    <th>Publisher</th>
+                    <th>Return</th>
+                </tr>
+            </thead>
+            <tbody id="bodyy">
+            {% if liked %}
+            {% for book in liked %}
+            <tr class="{% cycle 'odd-row' 'even-row' %}">
+                <td class="with-th">{{ book.id }}</td>
+                <td><img class="bookimg" src= "{% static 'bookhub/' %}{{ book.cover }}" onclick="location.href='{% url 'bookPage' book.id user.id %}'"></td>
+                <td>{{ book.name }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.category }}</td>
+                <td>{{ book.publisher }}</td>
+                
+                <td class="with-th">
+                    <button class="fa fa-heart" onclick="openLiked(this)"></button>
+                    
+                </td>
+                </tr>
+            {% endfor %}
+            {% endif %}
+            </tbody>
+
+        </table>
+    </div>
+    <p class="back-top"> <a href="#" class="back-to-top"> Back to Top</a> </p>
+    <!-- <div class="unlikebook">
+        <p>book removed from likes</p>
+    </div>
+    <div class="likebook">
+        <p>book added to likes</p>
+    </div> -->
+    <div id="RemoveLiked">
+        <div class="RemoveContainer">
+            <p id="remove-msg"></p>
+            <p id="remove-value" style="display: none;"></p>
+            <form method="post" action="{% url 'userLiked' user.id %}">
+                {% csrf_token %}
+            <input id="id4" type="number" placeholder="Book ID" name="BookID" hidden>
+            <button class="del-btn" onclick="closeLiked()" type="button">Cancel</button>
+            <button type="submit" class="del-btn">Unlike</button>
+            </form>
+        </div>
+    </div>
+    {% comment %} <script src="tablesButton.js"></script> {% endcomment %}
+    <script src="{% static 'bookhub/likebooks.js' %}"  data-likedbooks="{{ liked_json }}" data-user="{{ user.id }}" book-cover="{% static 'bookhub/' %}" ></script>
+    {% endblock %}
+    
